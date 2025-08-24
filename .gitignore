@@ -1,0 +1,10 @@
+# node modules
+
+backend/node_modules/
+frontend/node_modules/
+
+# IDE/editor junk
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
