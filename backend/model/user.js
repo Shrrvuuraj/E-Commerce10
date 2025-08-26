@@ -1,12 +1,79 @@
 import mongoose from "mongoose";
-const userSchema = mongoose.Schema(
+
+const userSchema = new mongoose.Schema(
   {
-    userName: { type: String, required: true },
-    email: { type: String, required: true },
-    password: { type: String, required: true },
-    phoneNo: { type: String, required: true },
-    address: { type: String, required: false },
+    username: {
+      type: String,
+      required: [true, "Provide your name"],
+    },
+    email: {
+      type: String,
+      required: [true, "Email is required"],
+      unique: true,
+    },
+    verifyEmail: {
+      type: Boolean,
+      default: false,
+    },
+    avatar: {
+      type: String,
+      default: "",
+    },
+    password: {
+      type: String,
+      required: [true, "Password is required"],
+    },
+    phone: {
+      type: String,
+      required: [true, "Phone number is required"],
+    },
+    refreshToken: {
+      type: String,
+      default: "",
+    },
+    addressDetails: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Address",
+      },
+    ],
+    lastLogin: {
+      type: Date,
+      default: null,
+    },
+    status: {
+      type: String,
+      enum: ["Active", "InActive", "Suspended"],
+      default: "Active",
+    },
+    shoppingCart: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "CartProduct",
+      },
+    ],
+    orderHistory: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Order",
+      },
+    ],
+    forgotPasswordOtp: {
+      type: String,
+      default: null,
+    },
+    forgotPasswordExpiry: {
+      type: Date,
+      default: null,
+    },
+    role: {
+      type: String,
+      enum: ["ADMIN", "USER"],
+      default: "USER",
+    },
   },
-  { Timestamp: true }
+  { timestamps: true }
 );
 
+const User = mongoose.model("User", userSchema);
+export default User;
