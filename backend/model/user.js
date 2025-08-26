@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
+import OrderList from "./orderList";
 
 const userSchema = new mongoose.Schema(
   {
-    username: {
+    userName: {
       type: String,
       required: [true, "Provide your name"],
     },
@@ -49,14 +50,20 @@ const userSchema = new mongoose.Schema(
     shoppingCart: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "CartProduct",
+        ref: "Cart",
       },
     ],
-    orderHistory: [
+    order: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Order",
       },
+    ],
+    orderList:[
+      {
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"OrderList"
+      }
     ],
     forgotPasswordOtp: {
       type: String,
