@@ -5,16 +5,19 @@ import {
   getAddress,
   postAddress,
   putAddress,
-  deleteAllAddress,
   deleteAddress,
 } from "../controller/addressController.js";
 
-router.route("/")
+router
+  .route("/")
   .get(getAllAddress)
-  .post(postAddress)
-  .delete(deleteAllAddress);
+  .post(postAddress);
 
 // seprtate
 
-router.route("/:id").get(getAddress).put(putAddress).delete(deleteAddress);
+router
+  .route("/:id")
+  .get(getAddress)
+  .put(putAddress)
+  .delete(deleteAddress);
 export default router;

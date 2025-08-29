@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 import OrderList from "./orderList.js";
+import Order from "./order.js";
+import Address from "./Addreess.js"
 
 const userSchema = new mongoose.Schema(
   {
