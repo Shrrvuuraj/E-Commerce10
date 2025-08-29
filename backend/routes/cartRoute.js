@@ -1,8 +1,21 @@
 import e from "express";
-import {cartController} from "../controller/cartController.js"
+import {
+  getCart,
+  deleteCartItem,
+  createCartItem,
+  deleteCartItem,
+  updateCartItem,
+} from "../controller/cartController.js";
 
+const router = e.Router();
 
-const router=e.Router();
+router
+     .route("/")
+     .get(getCart)
+     .post(createCartItem);
 
-router.get("/",cartController)
+router
+     .route("/{id")
+     .put(updateCartItem)
+     .delete(deleteCartItem)
 export default router;
