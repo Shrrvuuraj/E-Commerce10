@@ -1,6 +1,20 @@
 import express from "express";
-const router=express.Router();
-import {addressController} from "../controller/addressController.js"
+const router = express.Router();
+import {
+  getAllAddress,
+  getAddress,
+  postAddress,
+  putAddress,
+  deleteAllAddress,
+  deleteAddress,
+} from "../controller/addressController.js";
 
-router.get("/",addressController)
+router.route("/")
+  .get(getAllAddress)
+  .post(postAddress)
+  .delete(deleteAllAddress);
+
+// seprtate
+
+router.route("/:id").get(getAddress).put(putAddress).delete(deleteAddress);
 export default router;

@@ -1,6 +1,6 @@
 import express from "express";
 import connectMongodb from "./config/db.js";
-import dotenv from "dotenv";
+import dotenv from "dotenv" ;
 
 // importing routes
 import addressRoutes from "./routes/addressRoutes.js";
@@ -13,12 +13,15 @@ import priceRoutes from "./routes/priceRoute.js";
 import productRoutes from "./routes/productRoute.js";
 import userRoutes from "./routes/userRoute.js";
 
-dotenv.config({ override: true });
+dotenv.config({ override: true }); 
 
-connectMongodb();
+connectMongodb(); 
 
 const PORT = process.env.PORT || 8000;
 const app = express();
+
+
+app.use(express.json());
 
 app.use("/address", addressRoutes);
 app.use("/brand", brandRoutes);

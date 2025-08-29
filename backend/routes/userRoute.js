@@ -1,8 +1,23 @@
 import e from "express";
-import { userController} from "../controller/userController.js"
+import {
+  createUser,
+  getAllUser,
+  deleteUser,
+  updateUser,
+  getUser
+} from "../controller/userController.js";
 
-const router=e.Router();
+const router = e.Router();
 
-router.get("/",userController);
+router
+     .route("/")
+     .post(createUser)
+     .get(getAllUser);
+
+router
+     .route("/:id")
+     .delete(deleteUser)
+     .put(updateUser)
+     .get(getUser);
 
 export default router;
