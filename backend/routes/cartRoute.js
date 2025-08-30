@@ -1,7 +1,6 @@
 import e from "express";
 import {
   getCart,
-  deleteCartItem,
   createCartItem,
   deleteCartItem,
   updateCartItem,
@@ -9,13 +8,7 @@ import {
 
 const router = e.Router();
 
-router
-     .route("/")
-     .get(getCart)
-     .post(createCartItem);
+router.route("/").get(getCart).post(createCartItem);
 
-router
-     .route("/{id")
-     .put(updateCartItem)
-     .delete(deleteCartItem)
+router.route("/id").put(updateCartItem).delete(deleteCartItem);
 export default router;
