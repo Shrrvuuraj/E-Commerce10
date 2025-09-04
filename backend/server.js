@@ -9,7 +9,7 @@ import cartRoutes from "./routes/cartRoute.js";
 import categoryRoutes from "./routes/categoryRoute.js";
 
 import orderRoutes from "./routes/orderRoute.js";
-import priceRoutes from "./routes/priceRoute.js";
+
 import productRoutes from "./routes/productRoute.js";
 import userRoutes from "./routes/userRoute.js";
 
@@ -29,7 +29,7 @@ app.use("/cart", cartRoutes);
 app.use("/category", categoryRoutes);
 
 app.use("/order", orderRoutes);
-app.use("/price", priceRoutes);
+
 app.use("/product", productRoutes);
 app.use("/user", userRoutes);
 
