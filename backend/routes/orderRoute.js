@@ -1,8 +1,14 @@
 import e from "express";
-import { orderController} from "../controller/orderController.js"
+import {
+  createOrder,
+  deleteOrder,
+  getOrder,
+  upgradeOrder,
+} from "../controller/orderController.js";
 
-const router=e.Router();
+const router = e.Router();
 
-router.get("/",orderController);
+router.route("/").get(getOrder).post(createOrder);
+router.route("/:id").put(upgradeOrder).delete(deleteOrder);
 
 export default router;

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import OrderList from "./orderList.js";
+
 import Order from "./order.js";
 import Address from "./Addreess.js"
 import Cart from "./cart.js";
@@ -61,12 +61,6 @@ const userSchema = new mongoose.Schema(
         type: mongoose.Schema.Types.ObjectId,
         ref: "Order",
       },
-    ],
-    orderList:[
-      {
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"OrderList"
-      }
     ],
     forgotPasswordOtp: {
       type: String,

@@ -29,7 +29,7 @@ export const postAddress = async (req, res) => {
 // all address
 export const getAllAddress = async (req, res) => {
   try {
-    const addrees = await Address.find();
+    const addrees = await Address.find().populate("user");
     res.status(200).json(addrees);
   } catch (error) {
     res.status(500).json({ error: error.message });
