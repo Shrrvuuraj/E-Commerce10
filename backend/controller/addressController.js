@@ -6,14 +6,23 @@ export const postAddress = async (req, res) => {
   try {
     const address = await Address.create(req.body);
 
-    await User.findByIdAndUpdate(
-      req.body.user,
-      { $push: { addressDetails: address } },
-      { new: true }
-    );
-    res.status(200).json(address);
+    const user= await User.findById(req.body.user);
+    if(!user){
+      return res.status(404).json({message: "user not found"})
+    }
+
+    user.addressDetails.push(address._id)
+    await user.save()
+
+    res.status(200).json({success:true ,message:"Adrees added"})
+    // await User.findByIdAndUpdate(
+    //   req.body.user,
+    //   { $push: { addressDetails: address } },
+    //   { new: true }
+    // );
+    // res.status(200).json(address)
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ success:false ,error: error.message });
   }
 };
 
@@ -65,7 +74,7 @@ export const putAddress = async (req, res) => {
       { new: true }   // return updated doc
     );
     if (!addrees) {
-      return res.status(404).json("the user is not found");
+      return res.status(404).json("the addrees is not found");
     }
     res.status(200).json(addrees);
   } catch (error) {
